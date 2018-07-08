@@ -5,7 +5,7 @@ import Helmet from "react-helmet";
 import Content, { HTMLContent } from "../components/Content";
 import Container from "../components/Container";
 import ContentWrapper from "../components/ContentWrapper";
-import TagList from "../components/Taglist";
+import TagList from "../components/TagList";
 import Link from "../components/Link";
 import Heading from "../components/Heading";
 
