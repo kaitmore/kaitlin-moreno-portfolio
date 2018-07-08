@@ -222,6 +222,8 @@ async function getRunningBrowserstackSessions() {
 }
 ```
 
+I'm going to simply update our `startTests` function to warn us that there are not enough workers available and exit the script before executing anything. Check out the final script below:
+
 ```
 const createTestCafe = require("testcafe");
 const glob = require("glob-promise");
