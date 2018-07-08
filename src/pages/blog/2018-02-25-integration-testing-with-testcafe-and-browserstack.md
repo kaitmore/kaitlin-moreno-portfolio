@@ -12,6 +12,7 @@ tags:
   - test
   - code
 ---
+
 ![testcafe](/img/testcafe.png)
 
 I was recently assigned the task of setting up integration tests for a project at work. We were deciding between two open-source solutions, Nightwatch and TestCafe. Ultimately we went with TestCafe because it is not based on Selenium, which allowed for a much easier setup and a lot less tooling. It also has out of the box support for ES6 syntax and a handy plugin for extending their built in selectors to easily test React components. Here is an article with some more pros/cons of using TestCafe vs Nightwatch.
@@ -44,7 +45,7 @@ TestCafe does not support running tests consecutively, so I needed to come up wi
 
 ## Using TestCafe's Node API with BrowserStack
 
-In the gist below, I've written an async function that creates a new server instance. This function will take a browser as a string,`'browserstack:firefox@58.0:OS X HighSierra'`, or optionally as an array of strings, e.g. 
+In the gist below, I've written an async function that creates a new server instance. This function will take a browser as a string,`'browserstack:firefox@58.0:OS X HighSierra'`, or optionally as an array of strings, e.g.
 
 ```
 [
@@ -58,28 +59,7 @@ In the gist below, I've written an async function that creates a new server inst
 
 Same goes for the testFiles argument, which can either be a path or an array of paths to your desired test files.
 
-```javascript
-const createTestCafe = require("testcafe");
-
-async function createTestCafeInstance(browsers, testFiles) {
-  let testcafe;
-  await createTestCafe()
-    .then(tc => {
-      testcafe = tc;
-      return tc
-        .createRunner()
-        .startApp("npm start")
-        .src(testFiles)
-        .browsers(browsers)
-        .run();
-    })
-    .then(failedCount => {
-      console.log("Tests failed: " + failedCount);
-      testcafe.close();
-    })
-    .catch(err => console.error(err));
-}
-```
+`gist:kaitmore/4de40eb44893ef12454d88782b6201cc#syntax.text`
 
 Now let's use this function to create a new TestCafe instance for each batch of browsers. In this case I have 10 browsers that I want to test. I have a max of 5 parallel workers available, so that means I'll need to divide the browsers into 2 batches and each batch will be passed to a new TestCafe instance. Below you'll see an array that defines our supported browser matrix, as well as a `startTests` function that loops through those batches. If your BrowserStack plan only supports 1 parallel worker, you can just define all your browsers in that array without breaking them out into sub arrays.
 
@@ -90,7 +70,7 @@ const createTestCafe = require("testcafe");
  Our current plan allows for a max of 5 workers at a time,
  so to avoid crashing browserstack we group our browsers
  into 2 batches that run will run consecutively. /*/
- 
+
 const SUPPORTED_BROWSERS = [
   [
     "browserstack:safari@11.0:OS X High Sierra",
@@ -214,11 +194,11 @@ async function getRunningBrowserstackSessions() {
 `getRunningBrowserstackSessions` will return a response that looks something like this:
 
 ```
-{ 
+{
    used_time: 214457,
    total_available_time: 'Unlimited Testing Time',
    running_sessions: 0,
-   sessions_limit: 5 
+   sessions_limit: 5
 }
 ```
 
@@ -234,7 +214,7 @@ const chalk = require("chalk");
  Our current plan allows for a max of 5 workers at a time,
  so to avoid crashing browserstack we group our browsers
  into 2 batches that run will run consecutively. /*/
- 
+
 const SUPPORTED_BROWSERS = [
   [
     "browserstack:safari@11.0:OS X High Sierra",
@@ -306,9 +286,8 @@ startTests(SUPPORTED_BROWSERS, createTestCafeInstance);
 
 ## A couple more 'gotchas' to watch out for
 
-* [BrowserStack Safari has issues with testing localhost URLs](https://www.browserstack.com/question/663), which is why I didn't specify 'localhost' as the hostname in the createTestCafe() factory function [like they do in the docs](http://devexpress.github.io/testcafe/documentation/using-testcafe/programming-interface/createtestcafe.html). Safari just hangs indefinitely otherwise.
-* This is related to writing the actual tests, but one mistake I made that caused many hours of frustration was [leaving out a trailing /](https://github.com/DevExpress/testcafe/issues/2005) in my page fixtures after http://localhost:3000. If you're using a hash router this will mess things up and throw some wild, inconsistent errors.
-
+- [BrowserStack Safari has issues with testing localhost URLs](https://www.browserstack.com/question/663), which is why I didn't specify 'localhost' as the hostname in the createTestCafe() factory function [like they do in the docs](http://devexpress.github.io/testcafe/documentation/using-testcafe/programming-interface/createtestcafe.html). Safari just hangs indefinitely otherwise.
+- This is related to writing the actual tests, but one mistake I made that caused many hours of frustration was [leaving out a trailing /](https://github.com/DevExpress/testcafe/issues/2005) in my page fixtures after http://localhost:3000. If you're using a hash router this will mess things up and throw some wild, inconsistent errors.
 
 ```
 fixture`My first test`.page`http://localhost:3000/`
