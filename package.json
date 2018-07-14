@@ -25,6 +25,7 @@
     "react-helmet": "^5.2.0",
     "sharp": "^0.20.5",
     "styled-components": "^3.3.3",
+    "gatsby-plugin-styled-components": "^2.0.11",
     "uuid": "^3.2.1"
   },
   "keywords": [
@@ -42,7 +43,6 @@
     "update-deps": "npm-check . --skip-unused -u"
   },
   "devDependencies": {
-    "gatsby-plugin-styled-components": "^2.0.11",
     "npm-check": "^5.7.1",
     "prettier": "^1.13.7"
   }
