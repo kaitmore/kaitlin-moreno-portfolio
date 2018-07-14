@@ -42,6 +42,7 @@
     "update-deps": "npm-check . --skip-unused -u"
   },
   "devDependencies": {
+    "gatsby-plugin-styled-components": "^2.0.11",
     "npm-check": "^5.7.1",
     "prettier": "^1.13.7"
   }
