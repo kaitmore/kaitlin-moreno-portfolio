@@ -25,7 +25,7 @@ export const BlogPostTemplate = ({
       <Container>
         <ContentWrapper>
           <Heading>{title}</Heading>
-          <p>{description}</p>
+          <p style={{color: "darkgrey", fontStyle: "italic", margin: 0}}>{description}</p>
           <PostContent content={content} />
           {tags && tags.length ? (
             <div style={{ marginTop: `4rem` }}>

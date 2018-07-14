@@ -36,6 +36,12 @@ const ContentWrapper = styled.div`
       background-color: #2469f6;
     }
   }
+
+  img{
+    position: relative;
+    margin: 32px auto;
+    display: block;
+  }
 `;
 
 export default ContentWrapper;
