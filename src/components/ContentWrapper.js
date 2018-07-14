@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 const ContentWrapper = styled.div`
-  line-height: 24px;
+  line-height: 32px;
+
   &:not(:last-child) {
     margin-bottom: 1.5rem;
   }

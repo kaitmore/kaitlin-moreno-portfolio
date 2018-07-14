@@ -12,6 +12,10 @@ injectGlobal`
     margin: 0;
     font-size: 18px;
     border-top: 14px solid #2469f6;
+    
+    a {
+      text-decoration: none;
+    }
   }
 `;
 

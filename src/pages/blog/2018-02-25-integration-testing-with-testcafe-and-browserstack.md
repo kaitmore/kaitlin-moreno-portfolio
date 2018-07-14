@@ -37,7 +37,7 @@ Finally, add a script to your package.json:
 }
 ```
 
-Run npm run test:e2e and head over to your BrowserStack Automate dashboard to see your tests. The above command will run all tests in the 'e2e-tests' directory in Firefox 58 and IE 11. For a more in-depth explanation on setting up TestCafe using the CLI, check out Markus Oberleher's article.
+Run `npm run test:e2e` and head over to your BrowserStack Automate dashboard to see your tests. The above command will run all tests in the 'e2e-tests' directory in Firefox 58 and IE 11. For a more in-depth explanation on setting up TestCafe using the CLI, check out Markus Oberleher's article.
 
 ## BrowserStack Parallel Worker Limit
 
