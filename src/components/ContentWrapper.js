@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const ContentWrapper = styled.div`
+  line-height: 24px;
   &:not(:last-child) {
     margin-bottom: 1.5rem;
   }
@@ -22,6 +23,7 @@ const ContentWrapper = styled.div`
 
   h2 {
     font-size: 24px;
+    margin: 42px 0 24px 0;
     color: #5287f2;
   }
 

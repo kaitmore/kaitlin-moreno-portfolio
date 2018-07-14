@@ -23,13 +23,15 @@ BrowserStack is a cloud-based testing service that allows you to start up pretty
 
 Running tests in one or more of the BrowserStack cloud browsers is very simple. First install TestCafe and the BrowserStack plugin:
 
-`npm install --save-dev testcafe testcafe-browser-provider-browserstack`
+```bash
+npm install --save-dev testcafe testcafe-browser-provider-browserstack
+```
 
 Next, set environment variables with your `BROWSERSTACK_USERNAME` and `BROWSERSTACK_ACCESS_KEY` in your shell configuration.
 
 Finally, add a script to your package.json:
 
-```
+```json
 "scripts": {
   "test:e2e": "testcafe 'browserstack:firefox@58.0:OS X HighSierra,browserstack:ie@11:Windows 10' e2e-tests/*.js --app 'commandToStartApp'"
 }
@@ -45,9 +47,9 @@ TestCafe does not support running tests consecutively, so I needed to come up wi
 
 ## Using TestCafe's Node API with BrowserStack
 
-In the gist below, I've written an async function that creates a new server instance. This function will take a browser as a string,`'browserstack:firefox@58.0:OS X HighSierra'`, or optionally as an array of strings, e.g.
+In the gist below, I've written an async function that creates a new server instance. This function will take a browser as a string, `'browserstack:firefox@58.0:OS X HighSierra'`, or optionally as an array of strings, e.g.
 
-```
+```javascript
 [
    "browserstack:safari@11.0:OS X High Sierra",
    "browserstack:safari@10.1:OS X Sierra",
@@ -58,7 +60,6 @@ In the gist below, I've written an async function that creates a new server inst
 ```
 
 Same goes for the testFiles argument, which can either be a path or an array of paths to your desired test files.
-
 `gist:kaitmore/4de40eb44893ef12454d88782b6201cc#syntax.text`
 
 Now let's use this function to create a new TestCafe instance for each batch of browsers. In this case I have 10 browsers that I want to test. I have a max of 5 parallel workers available, so that means I'll need to divide the browsers into 2 batches and each batch will be passed to a new TestCafe instance. Below you'll see an array that defines our supported browser matrix, as well as a `startTests` function that loops through those batches. If your BrowserStack plan only supports 1 parallel worker, you can just define all your browsers in that array without breaking them out into sub arrays.
@@ -72,56 +73,56 @@ const createTestCafe = require("testcafe");
  into 2 batches that run will run consecutively. /*/
 
 const SUPPORTED_BROWSERS = [
-  [
-    "browserstack:safari@11.0:OS X High Sierra",
-    "browserstack:safari@10.1:OS X Sierra",
-    "browserstack:edge@16.0:Windows 10",
-    "browserstack:edge@15.0:Windows 10",
-    "browserstack:ie@11.0:Windows 10"
-  ],
-  [
-    "browserstack:chrome@64.0:OS X High Sierra",
-    "browserstack:chrome@64.0:Windows 10",
-    "browserstack:chrome@63.0:OS X High Sierra",
-    "browserstack:firefox@58.0:OS X High Sierra",
-    "browserstack:firefox@57.0:OS X High Sierra"
-  ]
+    [
+        "browserstack:safari@11.0:OS X High Sierra",
+        "browserstack:safari@10.1:OS X Sierra",
+        "browserstack:edge@16.0:Windows 10",
+        "browserstack:edge@15.0:Windows 10",
+        "browserstack:ie@11.0:Windows 10"
+    ],
+    [
+        "browserstack:chrome@64.0:OS X High Sierra",
+        "browserstack:chrome@64.0:Windows 10",
+        "browserstack:chrome@63.0:OS X High Sierra",
+        "browserstack:firefox@58.0:OS X High Sierra",
+        "browserstack:firefox@57.0:OS X High Sierra"
+    ]
 ];
 
 async function createTestCafeInstance(browsers, testFiles) {
-  let testcafe;
-  await createTestCafe()
-    .then(tc => {
-      testcafe = tc;
-      return tc
-        .createRunner()
-        .startApp("npm start")
-        .src(testFiles)
-        .browsers(browsers)
-        .run();
-    })
-    .then(failedCount => {
-      console.log("Tests failed: " + failedCount);
-      testcafe.close();
-    })
-    .catch(err => console.error(err));
+    let testcafe;
+    await createTestCafe()
+        .then(tc => {
+            testcafe = tc;
+            return tc
+                .createRunner()
+                .startApp("npm start")
+                .src(testFiles)
+                .browsers(browsers)
+                .run();
+        })
+        .then(failedCount => {
+            console.log("Tests failed: " + failedCount);
+            testcafe.close();
+        })
+        .catch(err => console.error(err));
 }
 
 async function startTests(browsers, createTestCafeInstance) {
     // Create a new testcafe instance for each batch of browsers
     for (let i = 0; i < browsers.length; i++) {
-      await createTestCafeInstance(browsers[i], 'e2e-tests/mytest.js');
+        await createTestCafeInstance(browsers[i], 'e2e-tests/mytest.js');
     }
-  }
 }
 
 startTests(SUPPORTED_BROWSERS, createTestCafeInstance);
 ```
 
 Now if you run this you'll see that the first batch of browsers will boot up, and only when those are finished will the 2nd batch start.
+
 You might have noticed that we are only defining one test above: `e2e-tests/mytest.js`. You probably want run a whole suite of tests, and it would be nice if we could just use a glob pattern to grab all our test files instead of hard coding an array of paths. Unfortunately the TestCafe Node API does not support glob patterns, so we need to create a simple helper function that does this for us. First:
 
-```
+```bash
 npm install --save-dev glob glob-promise
 ```
 
@@ -150,7 +151,7 @@ async function startTests(browsers, createTestCafeInstance) {
 
 Now we have a script that will initialize our BrowserStack workers in batches based on our allotted workers and grab the test files we want to run. Let's update that 'test:e2e' script in our package.json:
 
-```
+```json
 "scripts": {
   "test:e2e": "node scripts/startTests.js"
 }
@@ -161,13 +162,13 @@ Now we have a script that will initialize our BrowserStack workers in batches ba
 We still have a problem here though. What if two devs are working in this repo, and happen to run integration tests at the same time? Or we might want to work this script into our CI/CD pipeline and would need to be careful not to run the command at the same time locally. In a way we're back to where we started - there is no safeguard against overloading our BrowserStack workers.
 To solve this issue I'm going to take advantage of the BrowserStack Node API. We can use it to find out how many running sessions are currently available before running our tests.
 
-```
+```bash
 npm install --save-dev browserstack
 ```
 
 Next we'll need to add one more environment variable in addition to the ones set earlier (`BROWSERSTACK_USERNAME` and `BROWSERSTACK_ACCESS_KEY`), the password to access your BrowserStack account:
 
-```
+```bash
 export BROWSERSTACK_PASSWORD=abc123
 ```
 
@@ -193,7 +194,7 @@ async function getRunningBrowserstackSessions() {
 
 `getRunningBrowserstackSessions` will return a response that looks something like this:
 
-```
+```json
 {
    used_time: 214457,
    total_available_time: 'Unlimited Testing Time',
@@ -204,7 +205,7 @@ async function getRunningBrowserstackSessions() {
 
 I'm going to simply update our `startTests` function to warn us that there are not enough workers available and exit the script before executing anything. Check out the final script below:
 
-```
+```javascript
 const createTestCafe = require("testcafe");
 const glob = require("glob-promise");
 const BrowserStack = require("browserstack");
@@ -270,7 +271,9 @@ async function startTests(browsers, createTestCafeInstance) {
   if (sessionInfo.running_sessions !== 0) {
     console.error(
       chalk.red(
-        "There are not enough available Browserstack workers to run these tests. \nPlease cancel any running sessions from the Browserstack Automate dashboard and try again. \n"
+        "There are not enough available Browserstack workers to run these tests. 
+        \nPlease cancel any running sessions from the Browserstack Automate 
+        dashboard and try again. \n"
       )
     );
   } else {
@@ -286,10 +289,10 @@ startTests(SUPPORTED_BROWSERS, createTestCafeInstance);
 
 ## A couple more 'gotchas' to watch out for
 
-- [BrowserStack Safari has issues with testing localhost URLs](https://www.browserstack.com/question/663), which is why I didn't specify 'localhost' as the hostname in the createTestCafe() factory function [like they do in the docs](http://devexpress.github.io/testcafe/documentation/using-testcafe/programming-interface/createtestcafe.html). Safari just hangs indefinitely otherwise.
-- This is related to writing the actual tests, but one mistake I made that caused many hours of frustration was [leaving out a trailing /](https://github.com/DevExpress/testcafe/issues/2005) in my page fixtures after http://localhost:3000. If you're using a hash router this will mess things up and throw some wild, inconsistent errors.
+* [BrowserStack Safari has issues with testing localhost URLs](https://www.browserstack.com/question/663), which is why I didn't specify 'localhost' as the hostname in the createTestCafe() factory function [like they do in the docs](http://devexpress.github.io/testcafe/documentation/using-testcafe/programming-interface/createtestcafe.html). Safari just hangs indefinitely otherwise.
+* This is related to writing the actual tests, but one mistake I made that caused many hours of frustration was [leaving out a trailing /](https://github.com/DevExpress/testcafe/issues/2005) in my page fixtures after http://localhost:3000. If you're using a hash router this will mess things up and throw some wild, inconsistent errors.
 
-```
+```javascript
 fixture`My first test`.page`http://localhost:3000/`
 ```
 

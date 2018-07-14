@@ -24,25 +24,21 @@ export const BlogPostTemplate = ({
       {helmet || ""}
       <Container>
         <ContentWrapper>
-          <div className="columns">
-            <div className="column is-10 is-offset-1">
-              <Heading>{title}</Heading>
-              <p>{description}</p>
-              <PostContent content={content} />
-              {tags && tags.length ? (
-                <div style={{ marginTop: `4rem` }}>
-                  <h4>Tags</h4>
-                  <TagList>
-                    {tags.map(tag => (
-                      <li key={tag + `tag`}>
-                        <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                      </li>
-                    ))}
-                  </TagList>
-                </div>
-              ) : null}
+          <Heading>{title}</Heading>
+          <p>{description}</p>
+          <PostContent content={content} />
+          {tags && tags.length ? (
+            <div style={{ marginTop: `4rem` }}>
+              <h4>Tags</h4>
+              <TagList>
+                {tags.map(tag => (
+                  <li key={tag + `tag`}>
+                    <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                  </li>
+                ))}
+              </TagList>
             </div>
-          </div>
+          ) : null}
         </ContentWrapper>
       </Container>
     </section>
