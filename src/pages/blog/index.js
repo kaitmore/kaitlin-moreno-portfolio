@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import GLink from "gatsby-link";
 import styled, { injectGlobal } from "styled-components";
-import Heading from "../components/Heading";
-import Container from "../components/Container";
-import ContentWrapper from "../components/ContentWrapper";
+import Heading from "../../components/Heading";
+import Container from "../../components/Container";
+import ContentWrapper from "../../components/ContentWrapper";
 
 const Link = styled(GLink)`
   color: #2469f6;
@@ -59,7 +59,7 @@ IndexPage.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query IndexQuery {
+  query BlogQuery {
     allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
       filter: { frontmatter: { templateKey: { eq: "blog-post" } } }

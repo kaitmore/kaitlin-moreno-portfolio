@@ -24,9 +24,12 @@ const ContentWrapper = styled.div`
 
   h2 {
     font-size: 24px;
-    margin: 42px 0 24px 0;
     color: #5287f2;
+
   }
+    h2:not(:first-child){
+    margin: 42px 0 24px 0;
+    }
 
   a {
     color: #2469f6;
