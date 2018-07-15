@@ -15,9 +15,9 @@ tags:
 
 ![testcafe](/img/testcafe.png)
 
-I was recently assigned the task of setting up integration tests for a project at work. We were deciding between two open-source solutions, Nightwatch and TestCafe. Ultimately we went with TestCafe because it is not based on Selenium, which allowed for a much easier setup and a lot less tooling. It also has out of the box support for ES6 syntax and a handy plugin for extending their built in selectors to easily test React components. Here is an article with some more pros/cons of using TestCafe vs Nightwatch.
+I was recently assigned the task of setting up integration tests for a project at work. We were deciding between two open-source solutions, [Nightwatch](http://nightwatchjs.org/) and [TestCafe](https://devexpress.github.io/testcafe/). Ultimately we went with TestCafe because [it is not based on Selenium](https://dzone.com/articles/testcafe-e2e-testing-tool), which allowed for a much easier setup and a lot less tooling. It also has out of the box support for ES6 syntax and a [handy plugin](https://github.com/DevExpress/testcafe-react-selectors) for extending their built in selectors to easily test React components. [Here is an article](https://60devs.com/functional-testing-of-web-applications-using-testcafe-and-nightwatch.html) with some more pros/cons of using TestCafe vs Nightwatch.
 
-BrowserStack is a cloud-based testing service that allows you to start up pretty much any relevant browser without the need for a virtual machine. They also offer free plans for open source projects. I've used BrowserStack for a while now to manually check our app for cross-browser compatibility issues, which is obviously not the greatest solution. Lucky for us TestCafe offers integration with the BrowserStack Automation API through a simple plugin, testcafe-browser-provider-browserstack, which allows us to run automated tests across our whole supported browser matrix.
+[BrowserStack](https://www.browserstack.com/) is a cloud-based testing service that allows you to start up pretty much any relevant browser without the need for a virtual machine. They also offer [free plans](https://www.browserstack.com/pricing?tab=browser-plans-tab) for open source projects. I've used BrowserStack for a while now to manually check our app for cross-browser compatibility issues, which is obviously not the greatest solution. Lucky for us TestCafe offers integration with the BrowserStack Automation API through a simple plugin, [testcafe-browser-provider-browserstack](https://github.com/DevExpress/testcafe-browser-provider-browserstack), which allows us to run automated tests across our whole supported browser matrix.
 
 ## Using TestCafe's CLI with BrowserStack
 
@@ -37,7 +37,7 @@ Finally, add a script to your package.json:
 }
 ```
 
-Run `npm run test:e2e` and head over to your BrowserStack Automate dashboard to see your tests. The above command will run all tests in the 'e2e-tests' directory in Firefox 58 and IE 11. For a more in-depth explanation on setting up TestCafe using the CLI, check out Markus Oberleher's article.
+Run `npm run test:e2e` and head over to your [BrowserStack Automate dashboard](https://www.browserstack.com/automate) to see your tests. The above command will run all tests in the 'e2e-tests' directory in Firefox 58 and IE 11. For a more in-depth explanation on setting up TestCafe using the CLI, check out [Markus Oberleher's article](https://markus.oberlehner.net/blog/front-end-testing-cross-browser-acceptance-tests-with-testcafe-browserstack-and-npm-scripts/).
 
 ## BrowserStack Parallel Worker Limit
 
@@ -142,7 +142,7 @@ startTests(SUPPORTED_BROWSERS, createTestCafeInstance);
 
 Now if you run this you'll see that the first batch of browsers will boot up, and only when those are finished will the 2nd batch start.
 
-You might have noticed that we are only defining one test above: `e2e-tests/mytest.js`. You probably want run a whole suite of tests, and it would be nice if we could just use a glob pattern to grab all our test files instead of hard coding an array of paths. Unfortunately the TestCafe Node API does not support glob patterns, so we need to create a simple helper function that does this for us. First:
+You might have noticed that we are only defining one test above: `e2e-tests/mytest.js`. You probably want run a whole suite of tests, and it would be nice if we could just use a glob pattern to grab all our test files instead of hard coding an array of paths. Unfortunately the TestCafe Node API [does not support glob patterns](https://github.com/DevExpress/testcafe/issues/980), so we need to create a simple helper function that does this for us. First:
 
 ```bash
 npm install --save-dev glob glob-promise
@@ -182,7 +182,7 @@ Now we have a script that will initialize our BrowserStack workers in batches ba
 ## Using the BrowserStack Node API
 
 We still have a problem here though. What if two devs are working in this repo, and happen to run integration tests at the same time? Or we might want to work this script into our CI/CD pipeline and would need to be careful not to run the command at the same time locally. In a way we're back to where we started - there is no safeguard against overloading our BrowserStack workers.
-To solve this issue I'm going to take advantage of the BrowserStack Node API. We can use it to find out how many running sessions are currently available before running our tests.
+To solve this issue I'm going to take advantage of the [BrowserStack Node API](https://github.com/scottgonzalez/node-browserstack). We can use it to find out how many running sessions are currently available before running our tests.
 
 ```bash
 npm install --save-dev browserstack
