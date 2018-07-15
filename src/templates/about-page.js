@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Content, { HTMLContent } from "../components/Content";
 import Container from "../components/Container";
 import ContentWrapper from "../components/ContentWrapper";
+import Heading from "../components/Heading"
 
 export const AboutPageTemplate = ({ image, title, content, contentComponent, data }) => {
   const PageContent = contentComponent || Content;
@@ -11,9 +12,9 @@ export const AboutPageTemplate = ({ image, title, content, contentComponent, dat
       <Container>
         <ContentWrapper>
           <div className="section">
-            <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
+            <Heading>
               {title}
-            </h2>
+            </Heading>
             <div style={{display: "flex"}}>
             <PageContent className="content" content={content} />
             <img src={image} style={{borderRadius: "50%",flex: "1 0 auto", marginLeft:"50px",   width: "200px",  height: "200px",  objectFit: "cover", overflow: "hidden" }}/>
