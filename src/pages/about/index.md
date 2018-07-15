@@ -1,19 +1,13 @@
 ---
 templateKey: 'about-page'
 path: /about
-title: About our values
+title: Hi, I'm Kait
+image: /img/bio.jpg
 ---
-### Shade-grown coffee
-Coffee is a small tree or shrub that grows in the forest understory in its wild form, and traditionally was grown commercially under other trees that provided shade. The forest-like structure of shade coffee farms provides habitat for a great number of migratory and resident species.
+I am a passionate, independent learner with a keen eye for responsive design. My extensive background as a professional violinist and an entrepreneur has given me the skills to solve complex problems and perform under pressure. I am currently working as a [software developer](http://deciphernow.com/staff/kaitlin-moreno) at [Decipher Technology Studios](http://deciphernow.com) in Alexandria, VA.
 
-### Single origin
-Single-origin coffee is coffee grown within a single known geographic origin. Sometimes, this is a single farm or a specific collection of beans from a single country. The name of the coffee is then usually the place it was grown to whatever degree available.
+In October 2016, I decided to teach myself to code. I took the initiative to find great resources like Harvard's CS50 course, CodeCademy, Wes Bos, and Free Code Camp. After studying seriously on my own for 8 months, I decided to attend Grace Hopper Academy in New York City. Grace Hopper is an extension of Fullstack Academy, a 3 month coding bootcamp for women that has an 8% acceptance rate.
 
-### Sustainable farming
-Sustainable agriculture is farming in sustainable ways based on an understanding of ecosystem services, the study of relationships between organisms and their environment. What grows where and how it is grown are a matter of choice and careful consideration for nature and communities.
+I have a passion for design and photography that I try to bring to every project. As a succesful entreprenuer, I currently run two active small businesses in the DC area. District Strings, a music event company, provides classical music ensembles for weddings, parties, and corporate events. I also regulary photograph weddings and portraits through my photography business, Kaitlin Jane Photography.
 
-### Direct sourcing
-Direct trade is a form of sourcing practiced by some coffee roasters. Advocates of direct trade practices promote direct communication and price negotiation between buyer and farmer, along with systems that encourage and incentivize quality.
-
-### Reinvest profits
-We want to truly empower the communities that bring amazing coffee to you. That’s why we reinvest 20% of our profits into farms, local businesses and schools everywhere our coffee is grown. You can see the communities grow and learn more about coffee farming on our blog.
+[Check out my resume!](technical_resume_moreno.pdf)

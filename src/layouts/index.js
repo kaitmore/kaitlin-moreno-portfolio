@@ -2,13 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import styled, { injectGlobal } from "styled-components";
-require("prismjs/themes/prism-tomorrow.css");
+import "prismjs/themes/prism-coy.css"
 import Navbar from "../components/Navbar";
 
 
 injectGlobal`
   body {
-    font-family: 'Helvetica' !important;
+    font-family: 'Helvetica';
     margin: 0;
     font-size: 18px;
     border-top: 14px solid #2469f6;
