@@ -60,7 +60,29 @@ In the gist below, I've written an async function that creates a new server inst
 ```
 
 Same goes for the testFiles argument, which can either be a path or an array of paths to your desired test files.
-`gist:kaitmore/4de40eb44893ef12454d88782b6201cc#syntax.text`
+
+```javascript
+const createTestCafe = require("testcafe");
+
+async function createTestCafeInstance(browsers, testFiles) {
+  let testcafe;
+  await createTestCafe()
+    .then(tc => {
+      testcafe = tc;
+      return tc
+        .createRunner()
+        .startApp("npm start")
+        .src(testFiles)
+        .browsers(browsers)
+        .run();
+    })
+    .then(failedCount => {
+      console.log("Tests failed: " + failedCount);
+      testcafe.close();
+    })
+    .catch(err => console.error(err));
+}
+```
 
 Now let's use this function to create a new TestCafe instance for each batch of browsers. In this case I have 10 browsers that I want to test. I have a max of 5 parallel workers available, so that means I'll need to divide the browsers into 2 batches and each batch will be passed to a new TestCafe instance. Below you'll see an array that defines our supported browser matrix, as well as a `startTests` function that loops through those batches. If your BrowserStack plan only supports 1 parallel worker, you can just define all your browsers in that array without breaking them out into sub arrays.
 
