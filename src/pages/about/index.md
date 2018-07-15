@@ -2,7 +2,7 @@
 templateKey: 'about-page'
 path: /about
 title: Hi, I'm Kait
-image: img/bio.jpg
+image: /img/bio.jpg
 ---
 I am a passionate, independent learner with a keen eye for responsive design. My extensive background as a professional violinist and an entrepreneur has given me the skills to solve complex problems and perform under pressure. I am currently working as a [software developer](http://deciphernow.com/staff/kaitlin-moreno) at [Decipher Technology Studios](http://deciphernow.com) in Alexandria, VA.
 
