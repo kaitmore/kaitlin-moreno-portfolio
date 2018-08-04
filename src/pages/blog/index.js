@@ -22,30 +22,29 @@ export default class IndexPage extends React.Component {
     const { edges: posts } = data.allMarkdownRemark;
 
     return (
-      <section style={{ padding: "3rem 1.5rem" }}>
-        <Container>
-          {posts.map(({ node: post }) => (
-            <ContentWrapper
-              style={{ border: "1px solid #dcf0fd", padding: "2em 4em" }}
-              key={post.id}
-            >
-              <p>
-                <Link to={post.fields.slug}>{post.frontmatter.title}</Link>
-                <span> &bull; </span>
-                <small>{post.frontmatter.date}</small>
-              </p>
-              <p>
-                {post.excerpt}
-                <br />
-                <br />
-                <Link to={post.fields.slug} small>
-                  Keep Reading →
-                </Link>
-              </p>
-            </ContentWrapper>
-          ))}
-        </Container>
-      </section>
+      <Container>
+        <Heading>Blog</Heading>
+        {posts.map(({ node: post }) => (
+          <ContentWrapper
+            style={{ border: "1px solid #dcf0fd", padding: "2em 4em" }}
+            key={post.id}
+          >
+            <p>
+              <Link to={post.fields.slug}>{post.frontmatter.title}</Link>
+              <span> &bull; </span>
+              <small>{post.frontmatter.date}</small>
+            </p>
+            <p>
+              {post.excerpt}
+              <br />
+              <br />
+              <Link to={post.fields.slug} small>
+                Keep Reading →
+              </Link>
+            </p>
+          </ContentWrapper>
+        ))}
+      </Container>
     );
   }
 }
