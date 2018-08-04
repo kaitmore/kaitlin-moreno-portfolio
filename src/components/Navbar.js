@@ -47,7 +47,7 @@ const Navbar = () => (
           Blog
         </Link>
         <Link
-          to="/about"
+          to="/work"
           style={{
             padding: "20px",
             margin: "10px",
@@ -57,7 +57,7 @@ const Navbar = () => (
           Work
         </Link>
         <Link
-          to="/about"
+          to="/contact"
           style={{
             padding: "20px",
             margin: "10px",
