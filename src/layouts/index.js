@@ -35,7 +35,7 @@ injectGlobal`
 `;
 
 const TemplateWrapper = ({ children }) => (
-  <div>
+  <div style={{ height: "100vh" }}>
     <Helmet title="Kaitlin Moreno: Software Developer" />
     <Navbar />
     <div>{children()}</div>
