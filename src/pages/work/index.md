@@ -3,12 +3,12 @@ templateKey: 'work-page'
 path: /work
 title: Portfolio
 projects:
-  - title: Trackr
+  - title: TimeCloud
     subtitle: Chrome Extension
     thumbnail: /img/trackr.jpg
-    deployed_url: https://github.com/kaitmore/populate-chrome-ext
-    github_url: https://github.com/kaitmore/populate-chrome-ext
-    description: Trackr is a chrome extension that visualizes your time spent on the web. You have the ability to filter these items and view the result in both graph and list views. Created with jQuery and D3.
+    deployed_url: https://github.com/kaitmore/timecloud-chrome-ext
+    github_url: https://github.com/kaitmore/timecloud-chrome-ext
+    description: TimeCloud is a chrome extension that visualizes the time you spend surfin' the web. Each circle in the cloud represents the time spent on a particular website. You have the ability to filter these items and view the result in both graph and list view. Created with JS and D3.
   - title: Sonify
     subtitle: Data Sonification Tool
     thumbnail: /img/sonify.jpg
