@@ -38,9 +38,7 @@ export default class IndexPage extends React.Component {
               {post.excerpt}
               <br />
               <br />
-              <Link to={post.fields.slug} small>
-                Keep Reading →
-              </Link>
+              <Link to={post.fields.slug}>Keep Reading →</Link>
             </p>
           </ContentWrapper>
         ))}
