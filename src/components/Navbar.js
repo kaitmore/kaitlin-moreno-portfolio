@@ -10,63 +10,64 @@ const Navbar = () => (
   <nav
     style={{
       display: "flex",
-      justifyContent: "center",
+      justifyContent: "space-between",
       alignItems: "center",
-      paddingTop: "60px",
+      padding: "0 20px",
       flex: "1 1 auto"
     }}
   >
-    <img
-      src={logo}
-      alt="Kaldi"
-      style={{ height: "350px", padding: "0 60px" }}
-    />
-    <div>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "baseline"
+      }}
+    >
       <Heading style={{ color: "#2469f6" }}>Kaitlin Moreno</Heading>
-      <Heading style={{ fontSize: "25px" }}>Software Developer</Heading>
-
-      <div style={{ marginTop: "40px" }}>
-        <Link
-          to="/about"
-          style={{
-            padding: "20px",
-            marginRight: "10px",
-            border: "1px solid #dcf0fd"
-          }}
-        >
-          About
-        </Link>
-        <Link
-          to="/blog"
-          style={{
-            padding: "20px",
-            margin: "10px",
-            border: "1px solid #dcf0fd"
-          }}
-        >
-          Blog
-        </Link>
-        <Link
-          to="/work"
-          style={{
-            padding: "20px",
-            margin: "10px",
-            border: "1px solid #dcf0fd"
-          }}
-        >
-          Work
-        </Link>
-        <Link
-          to="/contact"
-          style={{
-            padding: "20px",
-            margin: "10px",
-            border: "1px solid #dcf0fd"
-          }}
-        >
-          Contact
-        </Link>
-      </div>
+      <Heading style={{ fontSize: "22px", margin: "0 24px" }}>
+        Software Developer
+      </Heading>
+    </div>
+    <div>
+      <Link
+        to="/about"
+        style={{
+          padding: "20px",
+          marginRight: "10px",
+          border: "1px solid #dcf0fd"
+        }}
+      >
+        About
+      </Link>
+      <Link
+        to="/blog"
+        style={{
+          padding: "20px",
+          margin: "10px",
+          border: "1px solid #dcf0fd"
+        }}
+      >
+        Blog
+      </Link>
+      <Link
+        to="/work"
+        style={{
+          padding: "20px",
+          margin: "10px",
+          border: "1px solid #dcf0fd"
+        }}
+      >
+        Work
+      </Link>
+      <Link
+        to="/contact"
+        style={{
+          padding: "20px",
+          margin: "10px",
+          border: "1px solid #dcf0fd"
+        }}
+      >
+        Contact
+      </Link>
     </div>
   </nav>
 );

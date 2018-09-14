@@ -24,6 +24,7 @@ export default class IndexPage extends React.Component {
     return (
       <section style={{ padding: "3rem 1.5rem" }}>
         <Container>
+          <Heading>Latest</Heading>
           {posts.map(({ node: post }) => (
             <ContentWrapper
               style={{ border: "1px solid #dcf0fd", padding: "2em 4em" }}
