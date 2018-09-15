@@ -9,4 +9,4 @@ I am a passionate, independent learner with a talent for writing clean, maintain
 
 Although I work in tech full time I am still active in the DC arts community. [rogue collective](http://roguecollectivedc.com), founded in 2014, is a string ensemble that focuses on interdisciplinary collaboration and improvisation and performs regularly in the DMV area. I also photograph weddings and portraits through my photography business, [Kaitlin Jane Photography](http://kaitlinjane.com).
 
-[Check out my resume!](technical_resume_moreno.pdf)
+[Check out my resume!](/technical_resume_moreno.pdf)
