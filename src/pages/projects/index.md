@@ -1,7 +1,7 @@
 ---
 templateKey: 'work-page'
-path: /work
-title: Portfolio
+path: /projects
+title: Projects
 projects:
   - title: TimeCloud
     subtitle: Chrome Extension
@@ -27,9 +27,14 @@ projects:
     deployed_url: http://tiny-kitchen.herokuapp.com
     github_url: https://github.com/concernconcern/tiny-kitchen
     description: Tiny Kitchen is a recipe organizer and intelligent kitchen assistant. Our app guides the user through the cooking process by providing an AI cooking assistant named Mochi. Mochi can read recipe steps, sets timers, and performs unit conversions based on voice commands. Users can add recipes to their own personal recipe boxes, add notes to recipes, and manage a grocery list. With our Chrome extension users can add recipes from their favorite cooking sites.
-talks:
-  - title: React Patterns - Render Props
-    thumbnail: 
-    url: https://www.youtube.com/watch?v=YIkxNWDjNAQ
-    description: Trackr is a chrome extension that visualizes your time spent on the web. You have the ability to filter these items and view the result in both graph and list views. Created with jQuery and D3.
+  - title: Learning Rust
+    subtitle: Youtube series
+    deployed_url: https://www.youtube.com/playlist?list=PLywCmJ05v3PhlDgxPAW1ryxHZJ9Tjohpi&jct=n-5yDQmE9KPCFxr-ipdv_DXPIsuk1A&disable_polymer=1
+    video: https://www.youtube-nocookie.com/embed/hArx6lfoLNs
+    description: Two javascript developers go through the Rust Programming Book week by week.
+  - title: React Patterns
+    subtitle: Render Props
+    deployed_url: https://www.youtube.com/watch?v=YIkxNWDjNAQ
+    video: https://www.youtube-nocookie.com/embed/YIkxNWDjNAQ
+    description: An introduction to the render prop pattern in React.
 ---

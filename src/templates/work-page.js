@@ -4,8 +4,6 @@ import GLink from "gatsby-link";
 import styled, { injectGlobal } from "styled-components";
 import Container from "../components/Container";
 
-import Features from "../components/Features";
-import Testimonials from "../components/Testimonials";
 import Heading from "../components/Heading";
 import ContentWrapper from "../components/ContentWrapper";
 
@@ -21,6 +19,7 @@ export const WorkPageTemplate = ({ title, projects, talks }) => {
         }}
       >
         {projects.map(project => {
+          console.log("project.video", project.video);
           return (
             <ContentWrapper
               style={{
@@ -50,22 +49,36 @@ export const WorkPageTemplate = ({ title, projects, talks }) => {
                     {project.subtitle}
                   </small>
                 </p>
-                <p>
-                  <a href={project.github_url} style={{ fontSize: "14px" }}>
-                    View Code →
-                  </a>
-                </p>
+                {project.github_url && (
+                  <p>
+                    <a href={project.github_url} style={{ fontSize: "14px" }}>
+                      View Code →
+                    </a>
+                  </p>
+                )}
               </div>
-              <img
-                src={project.thumbnail}
-                style={{
-                  maxWidth: "100%",
-                  height: "auto",
-                  display: "block",
-                  margin: "20px 0",
-                  objectFit: "cover"
-                }}
-              />
+              {project.thumbnail && (
+                <img
+                  src={project.thumbnail}
+                  style={{
+                    maxWidth: "100%",
+                    height: "",
+                    display: "block",
+                    margin: "20px 0",
+                    objectFit: "cover"
+                  }}
+                />
+              )}
+              {project.video && (
+                <iframe
+                  width="560"
+                  height="315"
+                  src={project.video}
+                  frameborder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                />
+              )}
               <p style={{ margin: 0 }}>{project.description}</p>
             </ContentWrapper>
           );
@@ -133,11 +146,7 @@ export const workPageQuery = graphql`
           deployed_url
           github_url
           description
-        }
-        talks {
-          title
-          url
-          description
+          video
         }
       }
     }

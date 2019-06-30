@@ -3,22 +3,57 @@ import PropTypes from "prop-types";
 import Content, { HTMLContent } from "../components/Content";
 import Container from "../components/Container";
 import ContentWrapper from "../components/ContentWrapper";
-import Heading from "../components/Heading"
+import Heading from "../components/Heading";
+import { ExternalLink } from "../components/Link";
 
-export const AboutPageTemplate = ({ image, title, content, contentComponent, data }) => {
+export const AboutPageTemplate = ({
+  image,
+  title,
+  content,
+  contentComponent,
+  data
+}) => {
   const PageContent = contentComponent || Content;
   return (
     <section style={{ padding: "3rem 1.5rem" }}>
       <Container>
         <ContentWrapper>
           <div className="section">
-            <Heading>
-              {title}
-            </Heading>
-            <div style={{display: "flex"}}>
-            <PageContent className="content" content={content} />
-            <img src={image} style={{borderRadius: "50%",flex: "1 0 auto", marginLeft:"50px",   width: "200px",  height: "200px",  objectFit: "cover", overflow: "hidden" }}/>
+            <Heading>{title}</Heading>
+            <div style={{ display: "flex" }}>
+              <PageContent className="content" content={content} />
+              <img src={image} id="bio" />
             </div>
+
+            <a href="https://github.com/kaitmore" id="social" target="_blank">
+              <img
+                height="32"
+                width="32"
+                src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg"
+              />
+            </a>
+            <a
+              href="https://twitter.com/kaitlinjane"
+              id="social"
+              target="_blank"
+            >
+              <img
+                height="32"
+                width="32"
+                src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/twitter.svg"
+              />
+            </a>
+            <a
+              target="_blank"
+              href="https://www.youtube.com/channel/UC7oFV8FKK9Htj-BMQoJ6roA/videos"
+              id="social"
+            >
+              <img
+                height="32"
+                width="32"
+                src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/youtube.svg"
+              />
+            </a>
           </div>
         </ContentWrapper>
       </Container>
@@ -55,7 +90,7 @@ export const aboutPageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       html
       frontmatter {
-        title,
+        title
         image
       }
     }
