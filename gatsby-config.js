@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: "Gatsby + Netlify CMS Starter"
+    title: "Kaitlin Moreno Porfolio"
   },
   plugins: [
     "gatsby-plugin-react-helmet",
@@ -51,13 +51,6 @@ module.exports = {
       }
     },
     "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
-    {
-      resolve: "gatsby-plugin-netlify-cms",
-      options: {
-        modulePath: `${__dirname}/src/cms/cms.js`
-      }
-    },
     `gatsby-plugin-styled-components`,
     "gatsby-plugin-netlify" // make sure to keep it last in the array
   ]

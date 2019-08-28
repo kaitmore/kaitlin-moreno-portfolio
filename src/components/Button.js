@@ -1,4 +1,3 @@
-import GLink from "gatsby-link";
 import styled from "styled-components";
 
 const Button = styled.button`

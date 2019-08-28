@@ -1,9 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import GLink from "gatsby-link";
-import styled, { injectGlobal } from "styled-components";
-import Container from "../components/Container";
+import { graphql } from "gatsby";
 
+import Container from "../components/Container";
 import Heading from "../components/Heading";
 import ContentWrapper from "../components/ContentWrapper";
 
@@ -67,6 +66,7 @@ export const WorkPageTemplate = ({ title, projects, talks }) => {
                     margin: "20px 0",
                     objectFit: "cover"
                   }}
+                  alt={project.title}
                 />
               )}
               {project.video && (
@@ -77,6 +77,7 @@ export const WorkPageTemplate = ({ title, projects, talks }) => {
                   frameborder="0"
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
+                  title={project.title}
                 />
               )}
               <p style={{ margin: 0 }}>{project.description}</p>

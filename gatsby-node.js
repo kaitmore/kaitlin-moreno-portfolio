@@ -2,8 +2,8 @@ const _ = require("lodash");
 const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
 
-exports.createPages = ({ actions, boundActionCreators, graphql }) => {
-  const { createPage, createRedirect } = boundActionCreators;
+exports.createPages = ({ actions, graphql }) => {
+  const { createPage, createRedirect } = actions;
 
   createRedirect({
     fromPath: `/`,
@@ -52,8 +52,8 @@ exports.createPages = ({ actions, boundActionCreators, graphql }) => {
   });
 };
 
-exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
-  const { createNodeField } = boundActionCreators;
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions;
 
   if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode });
