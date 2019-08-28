@@ -3,18 +3,18 @@ templateKey: 'work-page'
 path: /projects
 title: Projects
 projects:
+  - title: Sonify
+    subtitle: Data Sonification Tool
+    thumbnail: /img/sonify.jpg
+    deployed_url: https://kaitmore.github.io/sonify/
+    github_url: https://github.com/kaitmore/sonify
+    description: Sonify is a module that allows you to create audio representations of data in the browser. It was built with Javascript and the Web Audio API.
   - title: TimeCloud
     subtitle: Chrome Extension
     thumbnail: /img/trackr.jpg
     deployed_url: https://chrome.google.com/webstore/detail/timecloud/fdkedeclmfpbpdhoggmalbmnmjpfcoea
     github_url: https://github.com/kaitmore/timecloud-chrome-ext
     description: TimeCloud is a chrome extension that visualizes the time you spend surfin' the web. Each circle in the cloud represents the time spent on a particular website. You have the ability to filter these items and view the result in both graph and list view. Created with JS and D3.
-  - title: Sonify
-    subtitle: Data Sonification Tool
-    thumbnail: /img/sonify.jpg
-    deployed_url: https://github.com/kaitmore/sonify
-    github_url: https://github.com/kaitmore/sonify
-    description: Sonify is a module that allows you to create audio representations of data in the browser. It was built with Javascript and the Web Audio API.
   - title: Server Sent Events Demo
     subtitle: Twitter Clone
     thumbnail: /img/sse-demo.jpg
