@@ -2,90 +2,92 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 
+import Layout from "../components/layout";
 import Container from "../components/Container";
 import Heading from "../components/Heading";
 import ContentWrapper from "../components/ContentWrapper";
 
 export const WorkPageTemplate = ({ title, projects, talks }) => {
   return (
-    <Container>
-      <Heading>{title}</Heading>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          flexWrap: "wrap"
-        }}
-      >
-        {projects.map(project => {
-          console.log("project.video", project.video);
-          return (
-            <ContentWrapper
-              style={{
-                border: "1px solid #dcf0fd",
-                padding: "1em 2em",
-                flex: "1 1 400px",
-                margin: "1.5em",
-                overflow: "scroll"
-              }}
-              key={project.title}
-            >
-              <div
+    <Layout>
+      <Container>
+        <Heading>{title}</Heading>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            flexWrap: "wrap"
+          }}
+        >
+          {projects.map(project => {
+            return (
+              <ContentWrapper
                 style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  flexWrap: "nowrap"
+                  border: "1px solid #dcf0fd",
+                  padding: "1em 2em",
+                  flex: "1 1 400px",
+                  margin: "1.5em",
+                  overflow: "scroll"
                 }}
+                key={project.title}
               >
-                <p>
-                  <a
-                    href={project.deployed_url}
-                    style={{ fontSize: "24px", whiteSpace: "nowrap" }}
-                  >
-                    {project.title}
-                  </a>
-                  <small style={{ display: "block", fontStyle: "italic" }}>
-                    {project.subtitle}
-                  </small>
-                </p>
-                {project.github_url && (
-                  <p>
-                    <a href={project.github_url} style={{ fontSize: "14px" }}>
-                      View Code →
-                    </a>
-                  </p>
-                )}
-              </div>
-              {project.thumbnail && (
-                <img
-                  src={project.thumbnail}
+                <div
                   style={{
-                    maxWidth: "100%",
-                    height: "",
-                    display: "block",
-                    margin: "20px 0",
-                    objectFit: "cover"
+                    display: "flex",
+                    justifyContent: "space-between",
+                    flexWrap: "nowrap"
                   }}
-                  alt={project.title}
-                />
-              )}
-              {project.video && (
-                <iframe
-                  width="560"
-                  height="315"
-                  src={project.video}
-                  frameborder="0"
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                  title={project.title}
-                />
-              )}
-              <p style={{ margin: 0 }}>{project.description}</p>
-            </ContentWrapper>
-          );
-        })}
-      </div>
-    </Container>
+                >
+                  <p>
+                    <a
+                      href={project.deployed_url}
+                      style={{ fontSize: "24px", whiteSpace: "nowrap" }}
+                    >
+                      {project.title}
+                    </a>
+                    <small style={{ display: "block", fontStyle: "italic" }}>
+                      {project.subtitle}
+                    </small>
+                  </p>
+                  {project.github_url && (
+                    <p>
+                      <a href={project.github_url} style={{ fontSize: "14px" }}>
+                        View Code →
+                      </a>
+                    </p>
+                  )}
+                </div>
+                {project.thumbnail && (
+                  <img
+                    src={project.thumbnail}
+                    style={{
+                      maxWidth: "100%",
+                      height: "",
+                      display: "block",
+                      margin: "20px 0",
+                      objectFit: "cover"
+                    }}
+                    alt={project.title}
+                  />
+                )}
+                {project.video && (
+                  <iframe
+                    width="560"
+                    height="315"
+                    src={project.video}
+                    frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    title={project.title}
+                  />
+                )}
+                <p style={{ margin: 0 }}>{project.description}</p>
+              </ContentWrapper>
+            );
+          })}
+        </div>
+      </Container>
+    </Layout>
   );
 };
 

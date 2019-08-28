@@ -5,12 +5,12 @@ const { createFilePath } = require("gatsby-source-filesystem");
 exports.createPages = ({ actions, graphql }) => {
   const { createPage, createRedirect } = actions;
 
-  createRedirect({
-    fromPath: `/`,
-    isPermanent: true,
-    redirectInBrowser: true,
-    toPath: `/about`
-  });
+  // createRedirect({
+  //   fromPath: `/`,
+  //   isPermanent: true,
+  //   redirectInBrowser: true,
+  //   toPath: `/about`
+  // });
 
   return graphql(`
     {

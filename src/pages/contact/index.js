@@ -3,6 +3,9 @@ import styled from "styled-components";
 import Heading from "../../components/Heading";
 import Button from "../../components/Button";
 import Container from "../../components/Container";
+
+import Layout from "../../components/layout";
+
 const Input = styled.input`
   padding: 20px;
   border: 1px solid #dcf0fd;
@@ -42,37 +45,39 @@ const Textarea = styled.textarea`
 
 export default function ContactForm() {
   return (
-    <Container>
-      <Heading>Say Hi!</Heading>
-      <form
-        style={{
-          width: "50%"
-        }}
-        name="contact"
-        method="post"
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
-      >
-        <Input type="hidden" name="form-name" value="contact" />
-        <p>
-          <label>
-            <Input type="text" name="name" placeholder="Name" />
-          </label>
-        </p>
-        <p>
-          <label>
-            <Input type="email" name="email" placeholder="Email" />
-          </label>
-        </p>
-        <p>
-          <label>
-            <Textarea name="message" placeholder="Message" />
-          </label>
-        </p>
-        <p>
-          <Button type="submit">Send</Button>
-        </p>
-      </form>
-    </Container>
+    <Layout>
+      <Container>
+        <Heading>Say Hi!</Heading>
+        <form
+          style={{
+            width: "50%"
+          }}
+          name="contact"
+          method="post"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+        >
+          <Input type="hidden" name="form-name" value="contact" />
+          <p>
+            <label>
+              <Input type="text" name="name" placeholder="Name" />
+            </label>
+          </p>
+          <p>
+            <label>
+              <Input type="email" name="email" placeholder="Email" />
+            </label>
+          </p>
+          <p>
+            <label>
+              <Textarea name="message" placeholder="Message" />
+            </label>
+          </p>
+          <p>
+            <Button type="submit">Send</Button>
+          </p>
+        </form>
+      </Container>
+    </Layout>
   );
 }

@@ -1,10 +1,7 @@
 import React from "react";
 
-import github from "../img/github-icon.svg";
-import logo from "../img/codebuddha.svg";
 import Heading from "../components/Heading";
 import { InternalLink, ExternalLink } from "../components/Link";
-import ContentWrapper from "../components/ContentWrapper";
 
 const Navbar = () => (
   <nav
@@ -28,7 +25,7 @@ const Navbar = () => (
       </Heading>
     </div>
     <div>
-      <InternalLink to="/about">About</InternalLink>
+      <InternalLink to="/">About</InternalLink>
       <ExternalLink href="https://medium.com/@kaitmore" target="_blank">
         Blog
       </ExternalLink>
