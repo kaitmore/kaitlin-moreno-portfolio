@@ -50,15 +50,17 @@ export const WorkPageTemplate = ({ title, projects, talks }) => {
                   />
                 )}
                 {project.video && (
-                  <iframe
-                    width="560"
-                    height="315"
-                    src={project.video}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    title={project.title}
-                  />
+                  <VideoWrap>
+                    <iframe
+                      width="100%"
+                      height="auto"
+                      src={project.video}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      title={project.title}
+                    />
+                  </VideoWrap>
                 )}
                 <p style={{ margin: 0 }}>{project.description}</p>
               </ProjectBox>
@@ -69,6 +71,22 @@ export const WorkPageTemplate = ({ title, projects, talks }) => {
     </Layout>
   );
 };
+
+const VideoWrap = styled.div`
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+
+  iframe {
+    padding-bottom: 14px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+`;
 
 const SubTitle = styled.small`
   display: block;
