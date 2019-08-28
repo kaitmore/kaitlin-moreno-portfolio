@@ -1,20 +1,49 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-  margin: 56px auto;
+  margin: 56px;
   position: relative;
+  line-height: 32px;
 
-  @media screen and (min-width: 1024px) {
-    max-width: 960px;
-    width: 960px;
+  a {
+    color: #2469f6;
+    padding: 5px;
+    :hover {
+      color: white;
+      background-color: #2469f6;
+    }
   }
-  @media screen and (min-width: 1216px) {
-    max-width: 1152px;
-    width: 1152px;
+
+  h1 {
+    color: #2469f6;
   }
-  @media screen and (min-width: 1408px) {
-    max-width: 1344px;
-    width: 1344px;
+
+  h2,
+  h3 {
+    color: #5287f2;
+  }
+
+  @media only screen and (max-width: 900px) {
+    h1 {
+      text-align: center;
+    }
+
+    h1 {
+      white-space: nowrap;
+      font-size: 2em;
+    }
+
+    h2 {
+      white-space: nowrap;
+      font-size: 1.5em;
+      h3 {
+        font-size: 1.25em;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 650px) {
+    margin: 24px;
   }
 `;
 
