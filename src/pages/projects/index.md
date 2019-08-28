@@ -33,7 +33,7 @@ projects:
     video: https://www.youtube-nocookie.com/embed/hArx6lfoLNs
     description: Two javascript developers go through the Rust Programming Book week by week.
   - title: React Patterns
-    subtitle: Render Props
+    subtitle: A short talk on render props
     deployed_url: https://www.youtube.com/watch?v=YIkxNWDjNAQ
     video: https://www.youtube-nocookie.com/embed/YIkxNWDjNAQ
     description: An introduction to the render prop pattern in React.

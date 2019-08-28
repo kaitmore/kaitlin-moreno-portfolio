@@ -7,6 +7,7 @@ import Navbar from "./Navbar";
 const GlobalStyle = createGlobalStyle`
 
   body {
+border-top: 4px solid #5287f2;
     font-family: 'Helvetica';
     margin: 0;
     padding: 0;

@@ -2,6 +2,26 @@ import React from "react";
 import styled from "styled-components";
 import { InternalLink, ExternalLink } from "../components/Link";
 
+const Navbar = () => (
+  <Nav>
+    <Title>
+      <h1>Kaitlin Moreno</h1>
+      <h3>Software Developer</h3>
+    </Title>
+    <NavLinks>
+      <InternalLink to="/">About</InternalLink>
+      <InternalLink to="/projects">Projects</InternalLink>
+      <ExternalLink
+        href="https://medium.com/@kaitmore"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Blog &#x2197;
+      </ExternalLink>
+    </NavLinks>
+  </Nav>
+);
+
 const Title = styled.div`
   display: flex;
   align-items: baseline;
@@ -23,7 +43,7 @@ const Title = styled.div`
 const NavLinks = styled.div`
   white-space: nowrap;
   width: 100%;
-  max-width: 412px;
+  max-width: 300px;
   display: flex;
   justify-content: space-around;
 `;
@@ -33,7 +53,7 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: baseline;
   flex: 1 1 auto;
-  margin: 32px;
+  margin: 24px;
 
   @media only screen and (max-width: 900px) {
     align-items: center;
@@ -79,26 +99,5 @@ const Nav = styled.nav`
     }
   }
 `;
-
-const Navbar = () => (
-  <Nav>
-    <Title>
-      <h1>Kaitlin Moreno</h1>
-      <h3>Software Developer</h3>
-    </Title>
-    <NavLinks>
-      <InternalLink to="/">About</InternalLink>
-      <InternalLink to="/projects">Projects</InternalLink>
-      <ExternalLink
-        href="https://medium.com/@kaitmore"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Blog
-      </ExternalLink>
-      <InternalLink to="/contact">Contact</InternalLink>
-    </NavLinks>
-  </Nav>
-);
 
 export default Navbar;

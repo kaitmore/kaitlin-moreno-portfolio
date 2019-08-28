@@ -1,35 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-
+import styled from "styled-components";
 import Layout from "../components/layout";
 import Container from "../components/Container";
-import ContentWrapper from "../components/ContentWrapper";
 
 export const WorkPageTemplate = ({ title, projects, talks }) => {
   return (
     <Layout>
       <Container>
         <h2>{title}</h2>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            flexWrap: "wrap"
-          }}
-        >
+        <ProjectWrapper>
           {projects.map(project => {
             return (
-              <ContentWrapper
-                style={{
-                  border: "1px solid #dcf0fd",
-                  padding: "1em 2em",
-                  flex: "1 1 400px",
-                  margin: "1.5em",
-                  overflow: "scroll"
-                }}
-                key={project.title}
-              >
+              <ProjectBox key={project.title}>
                 <div
                   style={{
                     display: "flex",
@@ -44,28 +28,24 @@ export const WorkPageTemplate = ({ title, projects, talks }) => {
                     >
                       {project.title}
                     </a>
-                    <small style={{ display: "block", fontStyle: "italic" }}>
-                      {project.subtitle}
-                    </small>
+                    <SubTitle>{project.subtitle}</SubTitle>
                   </p>
                   {project.github_url && (
-                    <p>
-                      <a href={project.github_url} style={{ fontSize: "14px" }}>
-                        View Code →
-                      </a>
-                    </p>
+                    <a
+                      href={project.github_url}
+                      style={{
+                        fontSize: "14px",
+                        margin: "14px",
+                        height: "fit-content"
+                      }}
+                    >
+                      View Code →
+                    </a>
                   )}
                 </div>
                 {project.thumbnail && (
-                  <img
+                  <ProjectThumnail
                     src={project.thumbnail}
-                    style={{
-                      maxWidth: "100%",
-                      height: "",
-                      display: "block",
-                      margin: "20px 0",
-                      objectFit: "cover"
-                    }}
                     alt={project.title}
                   />
                 )}
@@ -81,14 +61,45 @@ export const WorkPageTemplate = ({ title, projects, talks }) => {
                   />
                 )}
                 <p style={{ margin: 0 }}>{project.description}</p>
-              </ContentWrapper>
+              </ProjectBox>
             );
           })}
-        </div>
+        </ProjectWrapper>
       </Container>
     </Layout>
   );
 };
+
+const SubTitle = styled.small`
+  display: block;
+  font-style: italic;
+  padding-left: 4px;
+`;
+
+const ProjectThumnail = styled.img`
+  max-width: 100%;
+  display: block;
+  margin: 20px 0;
+  object-fit: cover;
+`;
+
+const ProjectBox = styled.div`
+  border: 1px solid #dcf0fd;
+  padding: 1em 2em;
+  overflow: scroll;
+`;
+
+const ProjectWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(5, fit-content);
+  grid-column-gap: 8px;
+  grid-row-gap: 8px;
+
+  @media only screen and (max-width: 900px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+`;
 
 WorkPageTemplate.propTypes = {
   image: PropTypes.string,

@@ -5,21 +5,6 @@ import styled from "styled-components";
 import Layout from "../components/layout";
 import Content, { HTMLContent } from "../components/Content";
 import Container from "../components/Container";
-import Heading from "../components/Heading";
-
-const BioWrapper = styled.div`
-  display: flex;
-  > .content {
-    min-width: 300px;
-  }
-
-  @media only screen and (max-width: 900px) {
-    flex-direction: column-reverse;
-    > img#bio {
-      margin: 0 auto;
-    }
-  }
-`;
 
 export const AboutPageTemplate = ({
   image,
@@ -34,49 +19,26 @@ export const AboutPageTemplate = ({
         <h2>{title}</h2>
         <BioWrapper>
           <PageContent className="content" content={content} />
-
-          <img src={image} id="bio" alt="bio" />
+          <BioImg src={image} alt="bio" />
         </BioWrapper>
-
-        <a
-          href="https://github.com/kaitmore"
-          id="social"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <SocialLink href="https://github.com/kaitmore">
           <img
-            height="32"
-            width="32"
             src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg"
             alt="github"
           />
-        </a>
-        <a
-          href="https://twitter.com/kaitlinjane"
-          id="social"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        </SocialLink>
+        <SocialLink href="https://twitter.com/kaitlinjane">
           <img
-            height="32"
-            width="32"
             src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/twitter.svg"
             alt="twitter"
           />
-        </a>
-        <a
-          target="_blank"
-          href="https://www.youtube.com/channel/UC7oFV8FKK9Htj-BMQoJ6roA/videos"
-          id="social"
-          rel="noopener noreferrer"
-        >
+        </SocialLink>
+        <SocialLink href="https://www.youtube.com/channel/UC7oFV8FKK9Htj-BMQoJ6roA/videos">
           <img
-            height="32"
-            width="32"
             src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/youtube.svg"
             alt="youtube"
           />
-        </a>
+        </SocialLink>
       </Container>
     </Layout>
   );
@@ -87,6 +49,58 @@ AboutPageTemplate.propTypes = {
   content: PropTypes.string,
   contentComponent: PropTypes.func
 };
+
+const SocialLink = styled.a.attrs(() => ({
+  id: "social",
+  target: "_blank",
+  rel: "noopener noreferrer"
+}))`
+  img {
+    filter: invert(55%) sepia(40%) saturate(4973%) hue-rotate(202deg)
+      brightness(97%) contrast(96%);
+    height: 32px;
+    width: 32px;
+  }
+
+  &:hover {
+    background-color: unset !important;
+    img {
+      filter: invert(40%) sepia(100%) saturate(4314%) hue-rotate(213deg)
+        brightness(98%) contrast(96%);
+    }
+  }
+
+  :not(:first-of-type) {
+    padding-left: 16px;
+  }
+`;
+
+const BioImg = styled.img`
+  position: relative;
+  margin: 72px auto;
+  display: block;
+  border-radius: 50%;
+  flex: 1 0 auto;
+  margin-left: 50px;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  overflow: hidden;
+`;
+
+const BioWrapper = styled.div`
+  display: flex;
+  > .content {
+    min-width: 300px;
+  }
+
+  @media only screen and (max-width: 900px) {
+    flex-direction: column-reverse;
+    > img {
+      margin: 0 auto;
+    }
+  }
+`;
 
 const AboutPage = ({ data }) => {
   const { markdownRemark: post } = data;
