@@ -2,9 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { createGlobalStyle } from "styled-components";
-import Navbar from "../components/Navbar";
+import Navbar from "./Navbar";
 
 const GlobalStyle = createGlobalStyle`
+
   body {
     font-family: 'Helvetica';
     margin: 0;
@@ -13,6 +14,11 @@ const GlobalStyle = createGlobalStyle`
     a {
       text-decoration: none;
     }
+  }
+  *,
+  *:before,
+  *:after  {
+  box-sizing: border-box;
   }
 `;
 
@@ -26,7 +32,7 @@ const TemplateWrapper = ({ children }) => (
 );
 
 TemplateWrapper.propTypes = {
-  children: PropTypes.func
+  children: PropTypes.object
 };
 
 export default TemplateWrapper;

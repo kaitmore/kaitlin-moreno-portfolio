@@ -4,14 +4,13 @@ import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
 import Container from "../components/Container";
-import Heading from "../components/Heading";
 import ContentWrapper from "../components/ContentWrapper";
 
 export const WorkPageTemplate = ({ title, projects, talks }) => {
   return (
     <Layout>
       <Container>
-        <Heading>{title}</Heading>
+        <h2>{title}</h2>
         <div
           style={{
             display: "flex",
@@ -75,9 +74,9 @@ export const WorkPageTemplate = ({ title, projects, talks }) => {
                     width="560"
                     height="315"
                     src={project.video}
-                    frameborder="0"
+                    frameBorder="0"
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
+                    allowFullScreen
                     title={project.title}
                   />
                 )}
@@ -117,7 +116,6 @@ WorkPageTemplate.propTypes = {
 
 const WorkPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
-  console.log(data);
   return (
     <WorkPageTemplate
       title={frontmatter.title}

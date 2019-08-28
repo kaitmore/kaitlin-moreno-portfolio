@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 export const InternalLink = styled(GLink)`
   color: #2469f6;
-  padding: 20px;
-  margin: 10px;
+  display: inline-block;
+  padding: 16px;
   border: 1px solid #dcf0fd;
   ${props => props.small && `font-size: 12px;`};
   :hover {
