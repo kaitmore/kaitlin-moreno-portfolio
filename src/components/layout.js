@@ -26,7 +26,9 @@ border-top: 4px solid #5287f2;
 const TemplateWrapper = ({ children }) => (
   <div style={{ height: "100vh" }}>
     <GlobalStyle />
-    <Helmet title="Kaitlin Moreno: Software Developer" />
+    <Helmet title="Kaitlin Moreno: Software Developer">
+      <html lang="en" />
+    </Helmet>
     <Navbar />
     <div>{children}</div>
   </div>
