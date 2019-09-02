@@ -12,7 +12,7 @@ talks:
     subtitle: An introduction
     deployed_url: https://slides.com/kaitlinmoreno/deck-3
     video: https://www.youtube-nocookie.com/embed/hlbCroYcg00
-    description: An introduction to end to end testing for web apps. I talk about different kinds of testing, writing test plans, choosing the best tools, and preparing your test environment.
+    description: An introduction to end to end testing for web apps. I talk about different kinds of testing, writing a test plan, choosing the best tools, and preparing your test environment.
   - title: styled-components
     subtitle: Best practices
     deployed_url: https://slides.com/kaitlinmoreno/styled-components#/
