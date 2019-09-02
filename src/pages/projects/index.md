@@ -5,7 +5,7 @@ title: Projects
 projects:
   - title: Sonify
     subtitle: Data Sonification Tool
-    thumbnail: /img/sonify.jpg
+    thumbnail: /img/sonify.png
     deployed_url: https://kaitmore.github.io/sonify/
     github_url: https://github.com/kaitmore/sonify
     description: Sonify is a module that allows you to create audio representations of data in the browser. It was built with Javascript and the Web Audio API.

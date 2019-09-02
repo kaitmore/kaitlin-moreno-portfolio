@@ -14,13 +14,7 @@ export const WorkPageTemplate = ({ title, projects, talks }) => {
           {projects.map(project => {
             return (
               <ProjectBox key={project.title}>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    flexWrap: "nowrap"
-                  }}
-                >
+                <ProjectHeader>
                   <p>
                     <a
                       href={project.deployed_url}
@@ -42,7 +36,7 @@ export const WorkPageTemplate = ({ title, projects, talks }) => {
                       View Code →
                     </a>
                   )}
-                </div>
+                </ProjectHeader>
                 {project.thumbnail && (
                   <ProjectThumnail
                     src={project.thumbnail}
@@ -72,6 +66,12 @@ export const WorkPageTemplate = ({ title, projects, talks }) => {
   );
 };
 
+const ProjectHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+`;
+
 const VideoWrap = styled.div`
   position: relative;
   padding-bottom: 56.25%; /* 16:9 */
@@ -98,13 +98,12 @@ const ProjectThumnail = styled.img`
   max-width: 100%;
   display: block;
   margin: 20px 0;
-  object-fit: cover;
 `;
 
 const ProjectBox = styled.div`
   border: 1px solid #dcf0fd;
   padding: 1em 2em;
-  overflow: scroll;
+  overflow: auto;
 `;
 
 const ProjectWrapper = styled.div`
