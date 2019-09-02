@@ -11,6 +11,7 @@ const Navbar = () => (
     <NavLinks>
       <InternalLink to="/">About</InternalLink>
       <InternalLink to="/projects">Projects</InternalLink>
+      <InternalLink to="/talks">Talks</InternalLink>
       <ExternalLink
         href="https://medium.com/@kaitmore"
         target="_blank"
@@ -43,7 +44,7 @@ const Title = styled.div`
 const NavLinks = styled.div`
   white-space: nowrap;
   width: 100%;
-  max-width: 300px;
+  max-width: 375px;
   display: flex;
   justify-content: space-around;
 `;

@@ -5,13 +5,13 @@ import styled from "styled-components";
 import Layout from "../components/layout";
 import Container from "../components/Container";
 
-export const WorkPageTemplate = ({ title, projects, talks }) => {
+export const WorkPageTemplate = ({ title, items }) => {
   return (
     <Layout>
       <Container>
         <h2>{title}</h2>
         <ProjectWrapper>
-          {projects.map(project => {
+          {items.map(project => {
             return (
               <ProjectBox key={project.title}>
                 <ProjectHeader>
@@ -19,6 +19,8 @@ export const WorkPageTemplate = ({ title, projects, talks }) => {
                     <a
                       href={project.deployed_url}
                       style={{ fontSize: "24px", whiteSpace: "nowrap" }}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       {project.title}
                     </a>
@@ -32,6 +34,8 @@ export const WorkPageTemplate = ({ title, projects, talks }) => {
                         margin: "14px",
                         height: "fit-content"
                       }}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       View Code →
                     </a>
@@ -143,14 +147,11 @@ WorkPageTemplate.propTypes = {
 };
 
 const WorkPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark;
-  return (
-    <WorkPageTemplate
-      title={frontmatter.title}
-      projects={frontmatter.projects}
-      talks={frontmatter.talks}
-    />
-  );
+  const {
+    frontmatter: { title, projects, talks }
+  } = data.markdownRemark;
+  const items = title.toLowerCase() === "projects" ? projects : talks;
+  return <WorkPageTemplate title={title} items={items} />;
 };
 
 WorkPage.propTypes = {
@@ -174,6 +175,12 @@ export const workPageQuery = graphql`
           subtitle
           deployed_url
           github_url
+          description
+        }
+        talks {
+          title
+          subtitle
+          deployed_url
           description
           video
         }
