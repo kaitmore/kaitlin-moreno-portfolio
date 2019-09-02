@@ -26,7 +26,26 @@ border-top: 4px solid #5287f2;
 const TemplateWrapper = ({ children }) => (
   <div style={{ height: "100vh" }}>
     <GlobalStyle />
-    <Helmet title="Kaitlin Moreno: Software Developer">
+    <Helmet
+      title="Kaitlin Moreno: Software Developer"
+      meta={[
+        {
+          name: "description",
+          content:
+            "The personal portfolio of Washington, D.C. based software engineer Kaitlin Moreno."
+        },
+        {
+          name: "keywords",
+          content:
+            "software, engineer, tech, technology, javascript, frontend, front-end, backend, coder, coding, job, jobs, technology, end to end testing, testing, apps, web app, programming, programmer, washington dc, software jobs, software careers, react, react engineer, reactjs, node, css, html, dc, district of columbia, dc"
+        },
+        {
+          name: "robots",
+          content: "index, follow"
+        },
+        { name: "language", content: "English" }
+      ]}
+    >
       <html lang="en" />
     </Helmet>
     <Navbar />
