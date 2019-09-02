@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import styled from "styled-components";
+import Img from "gatsby-image";
 import Layout from "../components/layout";
 import Content, { HTMLContent } from "../components/Content";
 import Container from "../components/Container";
@@ -19,7 +20,7 @@ export const AboutPageTemplate = ({
         <h2>{title}</h2>
         <BioWrapper>
           <PageContent className="content" content={content} />
-          <BioImg src={image} alt="bio" />
+          <BioImg fluid={image.childImageSharp.fluid} alt="bio" />
         </BioWrapper>
         <SocialLink href="https://github.com/kaitmore">
           <img
@@ -75,7 +76,7 @@ const SocialLink = styled.a.attrs(() => ({
   }
 `;
 
-const BioImg = styled.img`
+const BioImg = styled(Img)`
   position: relative;
   margin: 72px auto;
   display: block;
@@ -103,12 +104,12 @@ const BioWrapper = styled.div`
 `;
 
 const AboutPage = ({ data }) => {
-  const { markdownRemark: post } = data;
+  const { markdownRemark: post, image } = data;
   return (
     <AboutPageTemplate
       contentComponent={HTMLContent}
       title={post.frontmatter.title}
-      image={post.frontmatter.image}
+      image={image}
       content={post.html}
     />
   );
@@ -127,6 +128,15 @@ export const aboutPageQuery = graphql`
       frontmatter {
         title
         image
+      }
+    }
+    image: file(relativePath: { eq: "bio.jpg" }) {
+      childImageSharp {
+        # Specify the image processing specifications right in the query.
+        # Makes it trivial to update as your page's design changes.
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
       }
     }
   }

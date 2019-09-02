@@ -4,14 +4,16 @@ import { graphql } from "gatsby";
 import styled from "styled-components";
 import Layout from "../components/layout";
 import Container from "../components/Container";
+import Img from "gatsby-image";
 
-export const WorkPageTemplate = ({ title, items }) => {
+export const WorkPageTemplate = ({ title, items, images }) => {
   return (
     <Layout>
       <Container>
         <h2>{title}</h2>
         <ProjectWrapper>
-          {items.map(project => {
+          {items.map((project, i) => {
+            const image = images.find(img => img.name === project.id);
             return (
               <ProjectBox key={project.title}>
                 <ProjectHeader>
@@ -41,9 +43,9 @@ export const WorkPageTemplate = ({ title, items }) => {
                     </a>
                   )}
                 </ProjectHeader>
-                {project.thumbnail && (
+                {image && (
                   <ProjectThumnail
-                    src={project.thumbnail}
+                    fluid={image.childImageSharp.fluid}
                     alt={project.title}
                   />
                 )}
@@ -98,7 +100,7 @@ const SubTitle = styled.small`
   padding-left: 4px;
 `;
 
-const ProjectThumnail = styled.img`
+const ProjectThumnail = styled(Img)`
   max-width: 100%;
   display: block;
   margin: 20px 0;
@@ -148,10 +150,13 @@ WorkPageTemplate.propTypes = {
 
 const WorkPage = ({ data }) => {
   const {
-    frontmatter: { title, projects, talks }
-  } = data.markdownRemark;
+    markdownRemark: {
+      frontmatter: { title, projects, talks }
+    },
+    images: { nodes }
+  } = data;
   const items = title.toLowerCase() === "projects" ? projects : talks;
-  return <WorkPageTemplate title={title} items={items} />;
+  return <WorkPageTemplate title={title} items={items} images={nodes} />;
 };
 
 WorkPage.propTypes = {
@@ -171,6 +176,7 @@ export const workPageQuery = graphql`
         title
         projects {
           title
+          id
           thumbnail
           subtitle
           deployed_url
@@ -183,6 +189,23 @@ export const workPageQuery = graphql`
           deployed_url
           description
           video
+        }
+      }
+    }
+    images: allFile(
+      filter: {
+        extension: { regex: "/(jpg)|(png)|(tif)|(tiff)|(webp)|(jpeg)/" }
+      }
+      sort: { fields: name, order: ASC }
+    ) {
+      nodes {
+        name
+        childImageSharp {
+          # Specify the image processing specifications right in the query.
+          # Makes it trivial to update as your page's design changes.
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
         }
       }
     }

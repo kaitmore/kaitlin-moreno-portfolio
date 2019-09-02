@@ -11,14 +11,16 @@ module.exports = {
         name: "pages"
       }
     },
+
     "gatsby-transformer-remark",
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        path: `${__dirname}/src/img`,
-        name: "images"
+        path: `${__dirname}/static/img`,
+        name: "img"
       }
     },
+    "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     `gatsby-plugin-styled-components`,
     "gatsby-plugin-netlify" // make sure to keep it last in the array

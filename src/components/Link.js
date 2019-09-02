@@ -6,7 +6,6 @@ export const InternalLink = styled(GLink)`
   display: inline-block;
   padding: 16px;
   border: 1px solid #dcf0fd;
-  ${props => props.small && `font-size: 12px;`};
   :hover {
     color: white;
     background-color: #2469f6;
