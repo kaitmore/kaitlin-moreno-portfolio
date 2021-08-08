@@ -3,8 +3,7 @@ templateKey: 'work-page'
 path: /talks
 title: Talks
 talks:
-https://www.youtube.com/watch?v=M-YFmJIm47A&feature=emb_title
-  - title: Covid API Hub: An Envoy Production Use Case
+  - title: Covid API Hub - An Envoy Production Use Case
     subtitle: EnvoyCon 2020
     deployed_url: https://www.youtube.com/watch?v=M-YFmJIm47Ajct=n-5yDQmE9KPCFxr-ipdv_DXPIsuk1A&disable_polymer=1
     video: https://www.youtube.com/watch?v=M-YFmJIm47A
