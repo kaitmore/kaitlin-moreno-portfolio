@@ -13,7 +13,7 @@ export const WorkPageTemplate = ({ title, items, images }) => {
         <h2>{title}</h2>
         <ProjectWrapper>
           {items.map((project, i) => {
-            const image = images.find(img => img.name === project.id);
+            const image = images.find((img) => img.name === project.id);
             return (
               <ProjectBox key={project.title}>
                 <ProjectHeader>
@@ -107,7 +107,7 @@ const ProjectThumnail = styled(Img)`
 `;
 
 const ProjectBox = styled.div`
-  border: 1px solid #dcf0fd;
+  border: 1px solid #b6d7ed;
   padding: 1em 2em;
   overflow: auto;
 `;

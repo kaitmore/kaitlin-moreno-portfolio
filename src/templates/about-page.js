@@ -16,11 +16,20 @@ export const AboutPageTemplate = ({
   const PageContent = contentComponent || Content;
   return (
     <Layout>
-      <Container>
-        <h2>{title}</h2>
+      <Container
+        style={{
+          maxWidth: "1000px",
+          margin: "0 auto",
+          textAlign: "center"
+        }}
+      >
+        <h2 style={{ marginTop: "64px" }}>{title}</h2>
         <BioWrapper>
-          <PageContent className="content" content={content} />
           <BioImg fluid={image.childImageSharp.fluid} alt="bio" />
+          <PageContent className="content" content={content} />
+          <ResumeLink href="/technical_resume_moreno.pdf">
+            Check out my resume 👩‍💻
+          </ResumeLink>
         </BioWrapper>
         <SocialLink href="https://github.com/kaitmore">
           <img
@@ -51,6 +60,19 @@ AboutPageTemplate.propTypes = {
   contentComponent: PropTypes.func
 };
 
+const ResumeLink = styled.a`
+  width: fit-content;
+  margin: 56px auto;
+  display: inline-block;
+  padding: 16px !important;
+  border: 1px solid #b6d7ed;
+
+  :hover {
+    color: white;
+    background-color: #2469f6;
+  }
+`;
+
 const SocialLink = styled.a.attrs(() => ({
   id: "social",
   target: "_blank",
@@ -78,27 +100,31 @@ const SocialLink = styled.a.attrs(() => ({
 
 const BioImg = styled(Img)`
   position: relative;
-  margin: 72px auto;
+  margin: 32px auto;
   display: block;
   border-radius: 50%;
   flex: 1 0 auto;
-  margin-left: 50px;
-  width: 250px;
-  height: 250px;
+  margin-left: auto;
+  width: 350px;
+  height: 350px;
   object-fit: cover;
   overflow: hidden;
 `;
 
 const BioWrapper = styled.div`
   display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+  margin: 0 auto;
   > .content {
     min-width: 300px;
   }
 
-  @media only screen and (max-width: 900px) {
-    flex-direction: column-reverse;
-    > img {
-      margin: 0 auto;
+  @media only screen and (max-width: 1200px) {
+    width: 50%;
+    > ${BioImg} {
+      width: 250px;
+      height: 250px;
     }
   }
 `;

@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    border-top: 4px solid #5287f2;
+    border: 16px solid #5287f2;
     font-family: 'Helvetica';
     margin: 0;
     padding: 0;
@@ -21,11 +21,13 @@ const GlobalStyle = createGlobalStyle`
     a {
       text-decoration: none;
     }
+    height: 100%;
+    min-height: 100vh;
   }
 `;
 
 const TemplateWrapper = ({ children }) => (
-  <div style={{ height: "100vh" }}>
+  <div style={{ height: "100%" }}>
     <GlobalStyle />
     <Helmet
       title="Kaitlin Moreno: Software Developer"
