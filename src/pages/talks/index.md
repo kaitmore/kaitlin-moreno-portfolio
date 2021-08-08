@@ -3,6 +3,12 @@ templateKey: 'work-page'
 path: /talks
 title: Talks
 talks:
+https://www.youtube.com/watch?v=M-YFmJIm47A&feature=emb_title
+  - title: Covid API Hub: An Envoy Production Use Case
+    subtitle: EnvoyCon 2020
+    deployed_url: https://www.youtube.com/watch?v=M-YFmJIm47Ajct=n-5yDQmE9KPCFxr-ipdv_DXPIsuk1A&disable_polymer=1
+    video: https://www.youtube.com/watch?v=M-YFmJIm47A
+    description: The COVID API Hub project was launched in April 2020 by the Grey Matter team as a way to consolidate and democratize COVID-19 datasets across the web. Using Grey Matter’s Envoy-based sidecar, the project now serves over 2 million requests daily. This talk is about our experience of using Envoy at scale - lessons learned along the way, witnessing the resilience mechanisms at work in the production environment, and our plans moving forward.
   - title: Learning Rust
     subtitle: Youtube series
     deployed_url: https://www.youtube.com/playlist?list=PLywCmJ05v3PhlDgxPAW1ryxHZJ9Tjohpi&jct=n-5yDQmE9KPCFxr-ipdv_DXPIsuk1A&disable_polymer=1
