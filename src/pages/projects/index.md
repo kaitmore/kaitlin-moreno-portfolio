@@ -3,6 +3,13 @@ templateKey: 'work-page'
 path: /projects
 title: Projects
 projects:
+  - title: CopyPasta
+    id: copypasta
+    subtitle: A macOS smart code snippet indexer for developers.
+    thumbnail: /img/copypasta.png
+    deployed_url: https://copypasta.sh/
+    github_url: https://copypasta.sh/
+    description: A macOS smart code snippet indexer for developers that allows you to save text snippets from anywhere on your machine. It also indexes snippets based on origin, url, or programming language, automatically detects programming language, and allows you to tag snippets with any arbitrary metadata
   - title: Sonify
     id: sonify
     subtitle: Data Sonification Tool
